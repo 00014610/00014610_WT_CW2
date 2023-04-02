@@ -1,0 +1,28 @@
+extends layout.pug
+
+block content
+    .container
+        .wrapper-breadcrupm
+            a(href="/") Home
+            span.slash /
+            a All Informations
+        .wrapper-box 
+            h2.all-infos All Posts
+            .boxes
+                each post in posts
+                    .box 
+                        img.box-image(src=post.image ? `/static/uploads/${post.image}` : 'https://i-shop.link/assets/images/no-image.png' alt="image")
+                        .wrapper-title 
+                            p.date #{post.date}
+                            h3.title #{post.post_name} 
+                            p.description #{post.content}
+                        .btns 
+                            a.more(href=`/all-information/${post.id}`) Read More 
+                            .btn
+                                a.delete(type="button" href=`/${post.id}/delete`) 
+                                    img(src="/static/images/trashbin.png", alt="delete button")
+                                a.update(type="button" href=`/generate/${post.id}`)
+                                    img(src="/static/images/update.jpg", alt="update image")
+                if(posts.length == 0)
+                    .free no data
+                    

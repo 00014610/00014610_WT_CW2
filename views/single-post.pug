@@ -1,0 +1,15 @@
+extends layout.pug
+
+block content
+    .container
+        .wrapper-breadcrupm
+            a(href="/") Home
+            span.slash /
+            a(href="/all-information") All Information 
+            span.slash / 
+            a Single-post
+        .wrapper-single_page 
+            p.date #{singlePost.date}
+            h1.title #{singlePost.post_name}
+            img(src=singlePost.image ? `/static/uploads/${singlePost.image}` :  'https://i-shop.link/assets/images/no-image.png', alt="image")
+            p.description #{singlePost.content}

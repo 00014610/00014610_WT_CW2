@@ -1,0 +1,29 @@
+doctype html
+html(lang="en")
+    head
+        title 00014610
+        link(rel="stylesheet", href="/static/index.css")
+
+    body
+        header.wrapper
+            div.navbar
+                h1.logo 
+                    a.logo_text(href="/") Wiki 
+                        span.text App   
+                nav.nav
+                    a.links(href="/") Home 
+                    a.links(href="/all-information") All Informations 
+                    a.links(href="/generate") Create Post
+
+        block content
+
+        Footer.wrapper-footer
+            div.footer
+                h1.logo
+                    a.logo_text(href="/") Wiki App 
+                nav.nav
+                    a.links(href="/") Home 
+                    a.links(href="/all-information") All Informations 
+            div.created_by 
+                p Created by 00014610
+        script(src="/static/frontend/generate.js") 

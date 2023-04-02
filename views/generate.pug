@@ -1,0 +1,46 @@
+extends layout.pug
+
+block content  
+    .container
+        .wrapper-breadcrupm
+            a(href="/") Home
+            span.slash /
+            a Generate   
+        .success 
+               .box 
+                    p successfully uploaded
+                    a(href="/all-information") All Informations 
+        .content 
+            form.form(action=update ? `/generate/${post.id}` : "/generate" method="POST" enctype="multipart/form-data") 
+                .form_elem 
+                    label(for="post_name") Post Name
+                    input(type="text" name = "post_name" placeholder = "Enter post name" value=update ? post.post_name : post_name)
+                    if((update ? post.post_name : post_name) ==  '')
+                        .error required field
+
+                .form_elem 
+                    label(for="date") Post Date 
+                    input(type="date" name="date" value=update ? post.date : date) 
+                    if((update ? post.date : date) ==  '')
+                        .error required field
+                        
+                .form_elem 
+                    label(for="image") Upload image 
+                    input(type="file" name="image" placeholder="Upload image")
+                    .optional optional field
+
+                .form_elem 
+                    label(for="content") Post Content 
+                    textarea(name="content",rows="5" placeholder="Write post content" data-update=update ? post.content : content ? content : '').text_content
+                    if((update ? post.content : content) ==  '')
+                        .error required field
+
+                .form_elem 
+                    button.btn(type="submit") Create Post
+        if(generated)
+            .create_modal 
+                .modal_content 
+                    h5 #{alreadyUpdate ? 'successfully updated' : 'successfully added'}
+                    .modal_buttons
+                        button.create_new Update  
+                        button.redirect Blogs
